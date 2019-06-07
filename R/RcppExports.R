@@ -9,3 +9,11 @@ true_positive_rate_ <- function(actual, predicted, cutoff) {
     .Call(`_metrics_true_positive_rate_`, actual, predicted, cutoff)
 }
 
+true_negative_rate_ <- function(actual, predicted, cutoff) {
+    .Call(`_metrics_true_negative_rate_`, actual, predicted, cutoff)
+}
+
+false_positive_rate_ <- function(actual, predicted, cutoff) {
+    .Call(`_metrics_false_positive_rate_`, actual, predicted, cutoff)
+}
+
