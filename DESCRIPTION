@@ -1,0 +1,13 @@
+Package: metrics
+Title: Metrics For Evaluating Machine Learning Models
+Version: 0.1.0
+Authors@R:
+    person(given = "An",
+           family = "Chu",
+           role = c("aut", "cre"),
+           email = "chuvanan.cva@gmail.com")
+Description: Performance metrics for classification and regression problems
+    that are widely used in supervised machine learning.
+License: What license it uses
+Encoding: UTF-8
+LazyData: true
