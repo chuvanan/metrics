@@ -1,0 +1,57 @@
+
+
+
+
+* List of performance metrics
+
+
+** Classification problems
+
+Metrics that built around confusion matrix:
+
+- [ ] Confusion Matrix (True Positive, True Negative, False Positive - Type I Error, False Negative - Type II Error)
+
+- [ ] True Positive Rate (TPR) / Hit Rate / Recall / Sensitivity / Detection Rate
+
+- [ ] True Negative Rate (TNR) / Specificity / Selectivity
+
+- [ ] False Positive Rate (FPR) / Fall-out / False Alarm Rate (FPR)
+
+- [ ] False Negative Rate (FNR) / Miss Rate
+
+- [ ] Positive Predicted Value (PPV) / Precision
+
+- [ ] Accuracy
+
+- [ ] Balanced Accuracy
+
+- [ ] False Discovery Rate (FDR)
+
+- [ ] False Omission Rate (FOR)
+
+- [ ] F1 Score
+
+- [ ] Matthews Correlation Coefficient (MCC)
+
+- [ ] Informedness (Bookmaker Informedness - BM)
+
+- [ ] Markedness (MK)
+
+- [ ] AUROC (Area Under ROC)
+
+- [ ] AR (Accuracy Ratio) / Gini Coefficient
+
+- [ ] KS Statistic
+
+- [ ] AUPR (Aread Under Precision-Recall Curve)
+
+- [ ] Brier Score
+
+- [ ] Information Entropy
+
+- [ ] Bayesian Error Rate
+
+** Regression problems
+
+
+* References
