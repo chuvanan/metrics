@@ -9,21 +9,21 @@
 
 Metrics that built around confusion matrix:
 
-- [ ] Confusion Matrix (True Positive, True Negative, False Positive - Type I Error, False Negative - Type II Error)
+- [X] Confusion Matrix (True Positive, True Negative, False Positive - Type I Error, False Negative - Type II Error)
 
-- [ ] True Positive Rate (TPR) / Hit Rate / Recall / Sensitivity / Detection Rate
+- [X] True Positive Rate (TPR) / Hit Rate / Recall / Sensitivity / Detection Rate
 
-- [ ] True Negative Rate (TNR) / Specificity / Selectivity
+- [X] True Negative Rate (TNR) / Specificity / Selectivity
 
-- [ ] False Positive Rate (FPR) / Fall-out / False Alarm Rate (FPR)
+- [X] False Positive Rate (FPR) / Fall-out / False Alarm Rate (FAR)
 
-- [ ] False Negative Rate (FNR) / Miss Rate
+- [X] False Negative Rate (FNR) / Miss Rate
+
+- [X] Accuracy
+
+- [X] Balanced Accuracy
 
 - [ ] Positive Predicted Value (PPV) / Precision
-
-- [ ] Accuracy
-
-- [ ] Balanced Accuracy
 
 - [ ] False Discovery Rate (FDR)
 
