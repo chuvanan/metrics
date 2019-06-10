@@ -186,7 +186,7 @@ mtr_npv <- function(actual, predicted, cutoff = 0.5) {
 }
 
 ##' @export
-ntr_for <- function(actual, predicted, cutoff = 0.5) {
+mtr_for <- function(actual, predicted, cutoff = 0.5) {
     1 - mtr_npv(actual, predicted, cutoff = cutoff)
 }
 
