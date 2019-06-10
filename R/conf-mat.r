@@ -163,7 +163,7 @@ mtr_ppv <- function(actual, predicted, cutoff = 0.5) {
 }
 
 ##' @export
-precision <- mtr_ppv
+mtr_precision <- mtr_ppv
 
 ##' @export
 mtr_fdr <- function(actual, predicted, cutoff = 0.5) {
