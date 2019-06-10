@@ -153,7 +153,7 @@ mtr_balanced_accuracy <- function(actual, predicted, cutoff = 0.5) {
 ##' @export
 mtr_ppv <- function(actual, predicted, cutoff = 0.5) {
 
-    conf_list <- confusion_matrix_(actual, predicted, cutoff = cutoff)
+    conf_list <- confusion_list(actual, predicted, cutoff = cutoff)
 
     TP <- conf_list[["TP"]]
     FP <- conf_list[["FP"]]
