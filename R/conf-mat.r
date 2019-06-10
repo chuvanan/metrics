@@ -147,6 +147,49 @@ mtr_balanced_accuracy <- function(actual, predicted, cutoff = 0.5) {
     (sensitivity + specificity) / 2
 }
 
+## Positive Predicted Value ----------------------------------------------------
+
+
+##' @export
+mtr_ppv <- function(actual, predicted, cutoff = 0.5) {
+
+    conf_list <- confusion_matrix_(actual, predicted, cutoff = cutoff)
+
+    TP <- conf_list[["TP"]]
+    FP <- conf_list[["FP"]]
+    PPV <- TP / (TP + FP)
+
+    PPV
+}
+
+##' @export
+precision <- mtr_ppv
+
+##' @export
+mtr_fdr <- function(actual, predicted, cutoff = 0.5) {
+    1 - mtr_ppv(actual, predicted, cutoff = cutoff)
+}
+
+## Negative Predicted Value ----------------------------------------------------
+
+
+##' @export
+mtr_npv <- function(actual, predicted, cutoff = 0.5) {
+
+    conf_list <- confusion_list(actual, predicted, cutoff = cutoff)
+
+    TN <- conf_list[["TN"]]
+    FN <- conf_list[["FN"]]
+    NPV <- TN / (TN + FN)
+
+    NPV
+}
+
+##' @export
+ntr_for <- function(actual, predicted, cutoff = 0.5) {
+    1 - mtr_npv(actual, predicted, cutoff = cutoff)
+}
+
 ## Helper functions ------------------------------------------------------------
 
 check_equal_length <- function(actual, predicted) {

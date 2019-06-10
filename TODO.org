@@ -23,11 +23,11 @@ Metrics that built around confusion matrix:
 
 - [X] Balanced Accuracy
 
-- [ ] Positive Predicted Value (PPV) / Precision
+- [X] Positive Predicted Value (PPV) / Precision
 
-- [ ] False Discovery Rate (FDR)
+- [X] False Discovery Rate (FDR)
 
-- [ ] False Omission Rate (FOR)
+- [X] False Omission Rate (FOR)
 
 - [ ] F1 Score
 
