@@ -111,8 +111,10 @@ mtr_fnr <- function(actual, predicted, cutoff = 0.5) {
 ##' @export
 mtr_miss_rate <- mtr_fnr
 
-## False Positive Rate ---------------------------------------------------------
+##' @export
+mtr_false_negative_rate <- mtr_fnr
 
+## False Positive Rate ---------------------------------------------------------
 
 ##' @export
 mtr_fpr <- function(actual, predicted, cutoff = 0.5) {
