@@ -10,7 +10,6 @@ confusion_list <- function(actual, predicted, cutoff = 0.5) {
     FN <- sum((predicted <= cutoff) & (actual == 1))
 
     list(TP = TP, TN = TN, FP = FP, FN = FN)
-
 }
 
 ##' @export
@@ -55,6 +54,9 @@ mtr_tpr <- function(actual, predicted, cutoff = 0.5) {
 }
 
 ##' @export
+mtr_true_positive_rate <- mtr_tpr
+
+##' @export
 mtr_hit_rate <- mtr_tpr
 
 ##' @export
@@ -90,6 +92,9 @@ mtr_tnr <- function(actual, predicted, cutoff = 0.5) {
 }
 
 ##' @export
+mtr_true_negative_rate <- mtr_tnr
+
+##' @export
 mtr_specificity <- mtr_tnr
 
 ##' @export
@@ -118,8 +123,13 @@ mtr_fpr <- function(actual, predicted, cutoff = 0.5) {
 mtr_fallout <- mtr_fpr
 
 ##' @export
+mtr_false_alarm_rate <- mtr_fpr
+
+##' @export
 mtr_far <- mtr_fpr
 
+##' @export
+mtr_false_positive_rate <- mtr_fpr
 
 ## Accuracy --------------------------------------------------------------------
 
@@ -148,7 +158,6 @@ mtr_balanced_accuracy <- function(actual, predicted, cutoff = 0.5) {
 }
 
 ## Positive Predicted Value ----------------------------------------------------
-
 
 ##' @export
 mtr_ppv <- function(actual, predicted, cutoff = 0.5) {
