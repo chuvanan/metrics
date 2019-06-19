@@ -61,6 +61,20 @@ Proper scoring rule:
 
 ** Regression problems
 
+- [X] Explained Variance
+
+- [X] Max Error
+
+- [X] Mean Absolute Error
+
+- [X] Mean Squared Error
+
+- [X] Mean Squared Logarithmic Error
+
+- [X] Median Absolute Error
+
+- [X] R2 Score
+
 * References
 
 - [[https://martin-thoma.com/binary-classifier-evaluation/][Evaluation of binary classifiers]]
