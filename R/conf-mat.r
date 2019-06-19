@@ -140,15 +140,25 @@ mtr_accuracy <- function(actual, predicted, cutoff = 0.5) {
 
     conf_list <- confusion_list(actual, predicted, cutoff = cutoff)
 
-    accuracy <- (conf_list[["TP"]] + conf_list[["TN"]]) / Reduce(sum, conf_list)
+    TP <- conf_list[["TP"]]
+    TN <- conf_list[["TN"]]
+
+    accuracy <- (TP + TN) / Reduce(sum, conf_list)
 
     accuracy
 }
 
 ##' @export
-mtr_error_rate <- function(actual, predicted, cutoff = 0.5) {
+mtr_ccr <- mtr_accuracy
+
+## Misclassification Rate ------------------------------------------------------
+
+##' @export
+mtr_misclassification_rate <- function(actual, predicted, cutoff = 0.5) {
     1 - mtr_accuracy(actual, predicted, cutoff = cutoff)
 }
+
+## Balanced Accuracy -----------------------------------------------------------
 
 ##' @export
 mtr_balanced_accuracy <- function(actual, predicted, cutoff = 0.5) {
