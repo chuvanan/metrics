@@ -75,10 +75,10 @@ mtr_tnr <- function(actual, predicted, cutoff = 0.5) {
 
     conf_list <- confusion_list(actual, predicted, cutoff = cutoff)
 
-    TN = conf_list[["TN"]]
-    FP = conf_list[["FP"]]
-    FN = conf_list[["FN"]]
-    N = TN + FP
+    TN <- conf_list[["TN"]]
+    FP <- conf_list[["FP"]]
+    FN <- conf_list[["FN"]]
+    N <- TN + FP
 
     if (N == 0 && FN == 0) {
         return(1)
