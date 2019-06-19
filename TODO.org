@@ -1,9 +1,7 @@
 
 
 
-
 * List of performance metrics
-
 
 ** Classification problems
 
@@ -19,39 +17,50 @@ Metrics that built around confusion matrix:
 
 - [X] False Negative Rate (FNR) / Miss Rate
 
-- [X] Accuracy
+- [X] Accuracy / Correct Classification Rate (Correctly Classified Rate)
+
+- [X] Misclassification Rate
 
 - [X] Balanced Accuracy
 
 - [X] Positive Predicted Value (PPV) / Precision
 
+- [X] Average Precision
+
 - [X] False Discovery Rate (FDR)
 
 - [X] False Omission Rate (FOR)
 
-- [ ] F1 Score
+- [X] Prevalence
 
-- [ ] Matthews Correlation Coefficient (MCC)
+- [X] F1 Score
 
-- [ ] Informedness (Bookmaker Informedness - BM)
+- [X] Matthews Correlation Coefficient (MCC)
 
-- [ ] Markedness (MK)
+- [X] Informedness (Bookmaker Informedness - BM) / Youden Index (Youden's J Statistic)
 
-- [ ] AUROC (Area Under ROC)
+- [X] Markedness (MK)
 
-- [ ] AR (Accuracy Ratio) / Gini Coefficient
+- [X] AUROC (Area Under ROC)
 
-- [ ] KS Statistic
+- [X] AR (Accuracy Ratio) / Gini Coefficient
 
-- [ ] AUPR (Aread Under Precision-Recall Curve)
+- [X] KS Statistic
 
-- [ ] Brier Score
-
-- [ ] Information Entropy
+- [ ] AUPR (Area Under Precision-Recall Curve)
 
 - [ ] Bayesian Error Rate
 
+- [X] Fowlkes-Mallows Index / G-Score
+
+Proper scoring rule:
+
+- [X] Log Loss & Mean Log Loss
+
+- [X] Brier Score
+
 ** Regression problems
 
-
 * References
+
+- [[https://martin-thoma.com/binary-classifier-evaluation/][Evaluation of binary classifiers]]
