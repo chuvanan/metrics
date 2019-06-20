@@ -1,9 +1,3 @@
-## -----------------------------------------------------------------------------
-## Metrics to assess performance of binary classifiers that build around
-## confusion matrix.
-## Author: An Chu <chuvanan.cva@gmail.com>
-## -----------------------------------------------------------------------------
-
 
 
 confusion_list <- function(actual, predicted, cutoff = 0.5) {
