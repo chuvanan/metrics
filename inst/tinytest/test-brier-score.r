@@ -19,13 +19,17 @@ expect_equal(mtr_brier_score(0, 0.4), 0.16)
 
 ## Test error ------------------------------------------------------------------
 
-## Multiclass error
+## raise error if actual is multiclass
 expect_error(mtr_brier_score(c(0, 1, 2), c(0, 0, 0)))
 
-## Inconsistent length of input vectors
+## raise error if length of input vectors is inconsistent
 expect_error(mtr_brier_score(act, pred1[-1]))
 
-## Invalid value inputs
+## raise error if predicted probabilities > 1
 expect_error(mtr_brier_score(c(0, 1), predicted = c(2, 0.5)))
+
+## raise error if predicted probabilities < 0
 expect_error(mtr_brier_score(c(0, 1), predicted = c(-1, 0.5)))
+
+## raise error if actual is different than 0 and 1
 expect_error(mtr_brier_score(actual = c(0, -1), c(0.1, 0.1)))
