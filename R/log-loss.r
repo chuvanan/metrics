@@ -1,38 +1,66 @@
 
 
+##' @title
+##' Negative log loss, also known as logarithmic loss or cross-entropy loss.
+##'
+##'
 ##' @description
-##' Log loss, also known as logistic loss or cross-entropy loss.
+##' Log loss is an effective metric for measuring the performance of a
+##' classification model where the prediction output is a probability value
+##' between 0 and 1.
+##'
+##' Log loss quantifies the accuracy of a classifier by penalizing false
+##' classifications. A perfect model would have a log loss of 0. Log loss
+##' increases as the predicted probability diverges from the actual label.
+##' This is the cost function used in logistic regression and neural networks.
+##'
+##' \code{mtr_log_loss} computes the elementwise log loss between two numeric
+##' vectors. While \code{mtr_mean_log_loss} computes the average log loss between
+##' two numeric vectors
 ##'
 ##'
+##' @note
+##' The logarithm used is the natural logarithm (base-e)
 ##'
 ##'
-##' @title Log Loss
-##' @param actual Numeric. A binary vector of actual outcome.
-##' @param predicted Numeric. A vector of predicted values.
-##' @param eps Numeric. Log loss is undefined for
-##' @return A length-1 numeric value.
+##' @param actual \code{[numeric]} Ground truth binary numeric vector containing
+##'     1 for the positive class and 0 for the negative class.
+##' @param predicted \code{[numeric]} A vector of estimated probabilities.
+##' @param eps \code{[numeric]} In case of predicted probability is equal zero
+##'     or one, log loss is undefined, so probabilities are clipped to max(eps,
+##'     min(1 - eps, p)). The default value of eps is 1e-15.
+##' @return A numeric vector output
+##' @name logloss
 ##' @author An Chu
+##' @examples
+##'
+##' ## log loss for scalar inputs, see how log loss is converging to zero
+##' mtr_log_loss(1, 0.1)
+##' mtr_log_loss(1, 0.5)
+##' mtr_log_loss(1, 0.9)
+##' mtr_log_loss(1, 1)
+##'
+##' ## mean log loss
+##' act <- c(0, 1, 1, 0, 0)
+##' pred <- c(0.12, 0.45, 0.9, 0.3, 0.4)
+##' mtr_mean_log_loss(actual = act, predicted = pred)
+##'
+##' @export
 mtr_log_loss <- function(actual, predicted, eps = 1e-15) {
 
     check_equal_length(actual, predicted)
+    check_binary(actual)
 
-    predicted <- clip(predicted, eps, 1 - eps)
+    predicted <- clip(predicted, mi = eps, ma = 1 - eps)
 
-    logloss <- -1 * (actual * log(predicted) + (1 - actual) * log(1 - predicted))
+    logloss <- (-1) * (actual * log(predicted) + (1 - actual) * log(1 - predicted))
 
     logloss
 }
 
 
-##' .. content for \description{} (no empty lines) ..
-##'
-##' .. content for \details{} ..
-##' @title
-##' @param actual
-##' @param predicted
-##' @param eps
-##' @return
-##' @author An Chu
+##' @rdname logloss
+##' @export
 mtr_mean_log_loss <- function(actual, predicted, eps = 1e-15) {
 
     logloss <- mtr_log_loss(actual, predicted, eps = eps)
