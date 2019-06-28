@@ -46,6 +46,20 @@
 ##' mtr_mean_log_loss(actual = act, predicted = pred)
 ##'
 ##' @export
+##'
+##' act <- c(1, 0, 0, 1, 1, 1)
+##' pred <- c(0.1, 0.7, 0.3, 0.9, 0.2, 0.1)
+##'
+##' ## log loss vector
+##' mtr_log_loss(act, pred)
+##' mtr_cross_entropy(act, pred)
+##'
+##' ## mean log loss
+##' mtr_mean_log_loss(act, pred)
+##' mtr_mean_cross_entropy(act, pred)
+##'
+##'
+##' @export
 mtr_log_loss <- function(actual, predicted, eps = 1e-15) {
 
     check_equal_length(actual, predicted)
@@ -61,9 +75,20 @@ mtr_log_loss <- function(actual, predicted, eps = 1e-15) {
 
 ##' @rdname logloss
 ##' @export
+mtr_cross_entropy <- mtr_log_loss
+
+
+
+##' @rdname logloss
+##' @export
 mtr_mean_log_loss <- function(actual, predicted, eps = 1e-15) {
 
     logloss <- mtr_log_loss(actual, predicted, eps = eps)
 
     mean(logloss)
 }
+
+
+##' @rdname logloss
+##' @export
+mtr_mean_cross_entropy <- mtr_mean_log_loss
