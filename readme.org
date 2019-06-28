@@ -1,0 +1,31 @@
+
+
+* metrics
+
+** Problem statement
+
+*** Why another package for assessing machine learning models?
+
+
+
+
+*** How is your package different?
+
+
+** How to use metrics
+
+*** Installation
+
+Install the stable version of =metrics= from CRAN:
+
+#+BEGIN_SRC r
+install.packages("metrics")
+#+END_SRC
+
+Or install the development version from Github with:
+
+#+BEGIN_SRC r
+devtools::install_github("chuvanan/metrics")
+#+END_SRC
+
+*** Usage
