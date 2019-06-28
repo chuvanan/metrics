@@ -11,15 +11,17 @@ expect_equal(mtr_mean_log_loss(act, act), 0)
 ## Metrics::logLoss(act, pred)
 ## 0.3798404
 expect_equal(
-    round(mtr_mean_log_loss(act, pred), 7),
-    0.3798404
+    mtr_mean_log_loss(act, pred),
+    0.3798404,
+    tol = 1e-7
 )
 
 ## Metrics::ll(act, pred)
 ## c(0.1278334, 0.7985077, 0.1053605, 0.3566749, 0.5108256)
 expect_equal(
-    round(mtr_log_loss(act, pred), 7),
-    c(0.1278334, 0.7985077, 0.1053605, 0.3566749, 0.5108256)
+    mtr_log_loss(act, pred),
+    c(0.1278334, 0.7985077, 0.1053605, 0.3566749, 0.5108256),
+    tol = 1e-7
 )
 
 ## Test error ------------------------------------------------------------------
