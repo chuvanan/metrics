@@ -1,3 +1,3 @@
 if (requireNamespace("tinytest", quietly = TRUE)) {
-    test_package("sea.metrics")
+    tinytest::test_package("sea.metrics")
 }
