@@ -15,6 +15,26 @@ mtr_auc_roc <- function(actual, predicted) {
 }
 
 
+##' @title 
+##' Accuracy Ratio
+##' 
+##' @description 
+##' 
+##' \code{mtr_ar}
+##' 
+##' @inheritParams classification_params
+##' @return A numeric scalar output
+##' @author An Chu
+##' @name accuracy_ratio
+##' @examples 
+##' 
+##' set.seed(101)
+##' pred <- runif(1000)
+##' act <- round(pred)
+##' pred[sample(1000, 500)] <- runif(500)   # noise
+##' mtr_accuracy_ratio(act, pred)
+##' 
+##' 
 ##' @export
 mtr_ar <- function(actual, predicted) {
     auc <- mtr_auc(actual, predicted)
@@ -23,8 +43,11 @@ mtr_ar <- function(actual, predicted) {
     ar
 }
 
+##' @rdname accuracy_ratio
 ##' @export
 mtr_accuracy_ratio <- mtr_ar
 
+
+##' @rdname accuracy_ratio
 ##' @export
 mtr_gini_coef <- mtr_ar
