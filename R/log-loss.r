@@ -41,15 +41,9 @@
 ##' mtr_log_loss(1, 0.9)
 ##' mtr_log_loss(1, 1)
 ##'
-##' ## mean log loss
+##' ## sample data
 ##' act <- c(0, 1, 1, 0, 0)
 ##' pred <- c(0.12, 0.45, 0.9, 0.3, 0.4)
-##' mtr_mean_log_loss(actual = act, predicted = pred)
-##'
-##' @export
-##'
-##' act <- c(1, 0, 0, 1, 1, 1)
-##' pred <- c(0.1, 0.7, 0.3, 0.9, 0.2, 0.1)
 ##'
 ##' ## log loss vector
 ##' mtr_log_loss(act, pred)
