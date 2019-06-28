@@ -53,6 +53,8 @@ Metrics that built around confusion matrix:
 
 - [X] Fowlkes-Mallows Index / G-Score
 
+- [X] Cohen Kappa
+
 Proper scoring rule:
 
 - [X] Log Loss & Mean Log Loss
@@ -69,11 +71,15 @@ Proper scoring rule:
 
 - [X] Mean Squared Error
 
+- [X] Root Mean Squared Error
+
 - [X] Mean Squared Logarithmic Error
 
 - [X] Median Absolute Error
 
 - [X] R2 Score
+
+** Unsupervised problems
 
 * References
 
