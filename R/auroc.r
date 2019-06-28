@@ -18,6 +18,7 @@ mtr_auc_roc <- function(actual, predicted) {
 ##' @export
 mtr_ar <- function(actual, predicted) {
     auc <- mtr_auc(actual, predicted)
+    auc <- mtr_auc_roc(actual, predicted)
     ar <- 2 * auc - 1
     ar
 }
