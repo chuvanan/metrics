@@ -2,14 +2,14 @@
 
 * metrics
 
-** Problem statement
+** Introduction
 
-*** Why another package for assessing machine learning models?
-
-
+*Why another package for assessing machine learning models?*
 
 
-*** How is your package different?
+
+
+*How is your package different?*
 
 
 ** How to use metrics
