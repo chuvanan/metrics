@@ -31,6 +31,7 @@
 ##'     min(1 - eps, p)). The default value of eps is 1e-15.
 ##' @return A numeric vector output
 ##' @name logloss
+##' @seealso \code{\link{mtr_brier_score}}
 ##' @author An Chu
 ##' @examples
 ##'
