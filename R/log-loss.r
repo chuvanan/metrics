@@ -5,18 +5,19 @@
 ##'
 ##'
 ##' @description
+##'
 ##' Log loss is an effective metric for measuring the performance of a
 ##' classification model where the prediction output is a probability value
 ##' between 0 and 1.
 ##'
 ##' Log loss quantifies the accuracy of a classifier by penalizing false
 ##' classifications. A perfect model would have a log loss of 0. Log loss
-##' increases as the predicted probability diverges from the actual label.
-##' This is the cost function used in logistic regression and neural networks.
+##' increases as the predicted probability diverges from the actual label. This
+##' is the cost function used in logistic regression and neural networks.
 ##'
 ##' \code{mtr_log_loss} computes the elementwise log loss between two numeric
-##' vectors. While \code{mtr_mean_log_loss} computes the average log loss between
-##' two numeric vectors
+##' vectors. While \code{mtr_mean_log_loss} computes the average log loss
+##' between two numeric vectors
 ##'
 ##'
 ##' @note
