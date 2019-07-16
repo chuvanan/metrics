@@ -84,10 +84,10 @@ mtr_confusion_matrix <- function(actual, predicted, cutoff = 0.5) {
                        dimnames = list(c("Positive", "Negative"),
                                        c("True", "False")))
 
-    conf_mat["Positive", "True"] = conf_list[["TP"]]
-    conf_mat["Positive", "False"] = conf_list[["FP"]]
-    conf_mat["Negative", "True"] = conf_list[["FN"]]
-    conf_mat["Negative", "False"] = conf_list[["TN"]]
+    conf_mat["Positive", "True"] <- conf_list[["TP"]]
+    conf_mat["Positive", "False"] <- conf_list[["FP"]]
+    conf_mat["Negative", "True"] <- conf_list[["FN"]]
+    conf_mat["Negative", "False"] <- conf_list[["TN"]]
 
     conf_mat
 }
