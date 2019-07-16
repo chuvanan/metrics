@@ -3,7 +3,7 @@
 
 * List of performance metrics
 
-** Classification problems
+** Classification tasks
 
 Metrics that built around confusion matrix:
 
@@ -67,7 +67,7 @@ Proper scoring rule:
 
 - [X] Brier Score
 
-** Regression problems
+** Regression tasks
 
 - [X] Explained Variance
 
@@ -85,8 +85,20 @@ Proper scoring rule:
 
 - [X] R2 Score
 
-** Unsupervised problems
+** Unsupervised tasks
 
-* References
+- [ ] Adjusted Mututal Information Score / Mutual Information Score
 
-- [[https://martin-thoma.com/binary-classifier-evaluation/][Evaluation of binary classifiers]]
+- [ ] Adjusted Rand Score
+
+- [ ] Calinski-Harabasz Score
+
+- [ ] Davies-Bouldin Score
+
+- [ ] Completeness Metric
+
+- [ ] V-Measure Score
+
+- [ ] Homogeneity Score
+
+- [ ] Mean Silhouette Coefficient / Silhouette Coefficient
