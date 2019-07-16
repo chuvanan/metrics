@@ -85,7 +85,7 @@ Proper scoring rule:
 
 - [X] R2 Score
 
-** Unsupervised tasks
+** Clustering tasks
 
 - [ ] Adjusted Mututal Information Score / Mutual Information Score
 
