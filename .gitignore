@@ -4,3 +4,4 @@
 .projectile
 *.Rproj
 src/.gitignore
+*.ipynb_checkpoints
