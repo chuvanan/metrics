@@ -35,3 +35,27 @@ clip <- function(x, mi, ma) {
 map_dbl <- function(.x, .f, ...) {
     vapply(X = .x, FUN = .f, FUN.VALUE = double(1), USE.NAMES = FALSE, ...)
 }
+
+
+## Trapezoidal rule
+## https://en.wikipedia.org/wiki/Trapezoidal_rule
+trapezoid <- function(x, y) {
+    ## assumes x is a partition and that x & y are the same length
+
+    if (anyNA(x) || anyNA(y)) {
+        comp <- complete.cases(x, y)
+        x <- x[comp]
+        y <- y[comp]
+    }
+
+    x_ord <- order(x)
+    x <- x[x_ord]
+    y <- y[x_ord]
+
+    ## dx
+    dx <- diff(x)
+    ## mid height of y
+    height <- (y[-1] + y[-length(y)]) / 2
+
+    sum(dx * height)
+}
