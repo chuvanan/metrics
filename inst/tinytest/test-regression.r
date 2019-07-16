@@ -2,13 +2,21 @@
 
 ## Test correctness ------------------------------------------------------------
 
-## Replicate tests from scikit-learn's metric test_regression.py
-
 act <- seq(50)
 pred <- act + 1
 
 expect_equal(
     mtr_explained_variance(act, pred),
+    target = 1
+)
+
+expect_equal(
+    mtr_mean_squared_error(act, pred),
+    target = 1
+)
+
+expect_equal(
+    mtr_root_mean_squared_error(act, pred),
     target = 1
 )
 
@@ -32,10 +40,13 @@ expect_equal(
     target = 1
 )
 
-## expect_equal(
-##     mtr_r2(act, pred),
-##     target = 1
-## )
+expect_equal(
+    mtr_r2(act, pred),
+    target = 0.9951981,
+    tol = 1e-7
+)
 
 
-## Test error ------------------------------------------------------------------
+## Test exception --------------------------------------------------------------
+
+expect_warning(mtr_r2(1, 0))
