@@ -25,7 +25,7 @@ Metrics that built around confusion matrix:
 
 - [X] Positive Predicted Value (PPV) / Precision
 
-- [X] Average Precision
+- [ ] Average Precision
 
 - [X] False Discovery Rate (FDR)
 
@@ -45,7 +45,7 @@ Metrics that built around confusion matrix:
 
 - [X] AR (Accuracy Ratio) / Gini Coefficient
 
-- [X] KS Statistic
+- [ ] KS Statistic
 
 - [ ] AUPR (Area Under Precision-Recall Curve)
 
@@ -54,6 +54,12 @@ Metrics that built around confusion matrix:
 - [X] Fowlkes-Mallows Index / G-Score
 
 - [X] Cohen Kappa
+
+- [ ] Hamming Loss
+
+- [ ] Hinge Loss
+
+- [ ] Jaccard Score
 
 Proper scoring rule:
 
