@@ -39,6 +39,7 @@ map_dbl <- function(.x, .f, ...) {
 
 ## Trapezoidal rule
 ## https://en.wikipedia.org/wiki/Trapezoidal_rule
+##' @importFrom stats complete.cases
 trapezoid <- function(x, y) {
     ## assumes x is a partition and that x & y are the same length
 
