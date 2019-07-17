@@ -1,6 +1,6 @@
 
 
-two_class_sample_data <- read.csv("two-class-sample-data.csv")
+two_class_sample_data <- read.csv("../extdata/two-class-sample-data.csv")
 act <- two_class_sample_data$act
 pred <- two_class_sample_data$pred
 

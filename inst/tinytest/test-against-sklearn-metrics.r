@@ -2,8 +2,8 @@
 
 ## Classification Metrics ------------------------------------------------------
 
-two_class_sample_data <- read.csv("two-class-sample-data.csv")
-sklearn_metrics_two_class <- read.csv("sklearn-metrics-two-class.csv")
+two_class_sample_data <- read.csv("../extdata/two-class-sample-data.csv")
+sklearn_metrics_two_class <- read.csv("../extdata/sklearn-metrics-two-class.csv")
 
 expect_equal(
     with(two_class_sample_data, mtr_accuracy(act, pred)),
@@ -62,8 +62,8 @@ expect_equal(
 
 ## Regression Metrics ----------------------------------------------------------
 
-regression_sample_data <- read.csv("regression-sample-data.csv")
-sklearn_metrics_regression <- read.csv("sklearn-metrics-regression.csv")
+regression_sample_data <- read.csv("../extdata/regression-sample-data.csv")
+sklearn_metrics_regression <- read.csv("../extdata/sklearn-metrics-regression.csv")
 
 expect_equal(
     with(regression_sample_data, mtr_explained_variance(act, pred)),
