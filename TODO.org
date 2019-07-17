@@ -45,7 +45,7 @@ Metrics that built around confusion matrix:
 
 - [X] AR (Accuracy Ratio) / Gini Coefficient
 
-- [ ] KS Statistic
+- [X] KS Statistic
 
 - [ ] AUPR (Area Under Precision-Recall Curve)
 

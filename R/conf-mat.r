@@ -559,14 +559,23 @@ mtr_detection_prevalence <- function(actual, predicted, cutoff = 0.5) {
 ##' @export
 mtr_ks_statistic <- function(actual, predicted) {
 
-    thresholds <- seq(min(predicted), max(predicted), 0.01)
-    thresholds <- predicted
+    descending <- order(predicted, decreasing = TRUE)
+    actual <- actual[descending]
+    predicted <- predicted[descending]
 
-    TPR <- map_dbl(thresholds, function(x) mtr_tpr(actual, predicted, cutoff = x))
-    FPR <- map_dbl(thresholds, function(x) mtr_fpr(actual, predicted, cutoff = x))
+    bins <- 10                          # this is arbitrary
+    len <- length(actual)
+    n <- len %/% bins        # number of obs per bin
 
-    max(TPR - FPR)
+    group_index <- rep(1:(bins - 1), each = n)
+    group_index <- append(group_index, rep(bins, len - length(group_index)))
+
+    perct_pos <- tapply(actual, group_index, function(x) sum(x == 1)) / sum(actual == 1)
+    perct_neg <- tapply(actual, group_index, function(x) sum(x == 0)) / sum(actual == 0)
+
+    max(cumsum(perct_pos) - cumsum(perct_neg))
 }
+
 
 ## Informedness ----------------------------------------------------------------
 
