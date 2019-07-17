@@ -23,11 +23,6 @@ A numeric scalar output
 \description{
 test
 }
-\examples{
-
-
-
-}
 \author{
 An Chu
 }

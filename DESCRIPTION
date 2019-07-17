@@ -8,14 +8,26 @@ Authors@R:
            email = "chuvanan.cva@gmail.com")
 Description: Performance metrics for classification and regression problems
     that are widely used in supervised machine learning.
-License: What license it uses
+License: file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
-LinkingTo: 
+LinkingTo:
     Rcpp
-Imports: 
+Imports:
     Rcpp
 Suggests:
     tinytest
+Collate:
+    'RcppExports.R'
+    'helper-functions.r'
+    'auprc.r'
+    'auroc.r'
+    'brier-score.r'
+    'conf-mat.r'
+    'kappa.r'
+    'log-loss.r'
+    'metrics.r'
+    'optimal-cutoff.r'
+    'regression.r'
