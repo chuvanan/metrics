@@ -26,6 +26,7 @@
 ##' @inheritParams classification_params
 ##' @return A numeric scalar output
 ##' @author An Chu
+##' @include helper-functions.r
 ##' @export
 ##' @examples
 ##'

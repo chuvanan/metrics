@@ -12,6 +12,7 @@
 ##' @return A numeric scalar output
 ##' @seealso \code{\link{mtr_ar}} \code{\link{mtr_auc_prc}}
 ##' @author An Chu
+##' @include helper-functions.r
 ##' @examples
 ##'
 ##' set.seed(101)

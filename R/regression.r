@@ -10,6 +10,7 @@
 ##'     element in the vector is a prediction of the corresponding elements in
 ##'     \code{actual}.
 ##' @name regression_params
+##' @include helper-functions.r
 NULL
 
 
@@ -130,7 +131,7 @@ mtr_mae <- mtr_mean_absolute_error
 ##' @return A numeric scalar output
 ##' @author An Chu
 ##' @name mse
-##' @examples
+##' @export
 ##'
 ##'
 ##'

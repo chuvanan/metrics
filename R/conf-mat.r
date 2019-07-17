@@ -12,7 +12,7 @@
 ##' @param cutoff \code{[numeric]} A cutoff value for \code{predicted} vector
 ##'     which classify a sample into a given class. Default value is 0.5
 ##'
-##'
+##' @include helper-functions.r
 ##' @name classification_params
 NULL
 

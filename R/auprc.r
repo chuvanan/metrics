@@ -10,6 +10,7 @@
 ##' @return A numeric scalar output
 ##' @seealso \code{\link{mtr_auc_roc}}
 ##' @author An Chu
+##' @include helper-functions.r
 ##' @examples
 ##'
 ##' set.seed(101)

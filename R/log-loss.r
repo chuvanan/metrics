@@ -34,6 +34,7 @@
 ##' @name logloss
 ##' @seealso \code{\link{mtr_brier_score}}
 ##' @author An Chu
+##' @include helper-functions.r
 ##' @examples
 ##'
 ##' ## log loss for scalar inputs, see how log loss is converging to zero

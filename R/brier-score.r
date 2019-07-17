@@ -42,6 +42,7 @@
 ##' @param predicted \code{[numeric]} A vector of estimated probabilities.
 ##' @return A scalar numeric output
 ##' @author An Chu
+##' @include helper-functions.r
 ##' @seealso \code{\link{mtr_log_loss}} \code{\link{mtr_mean_log_loss}}
 ##' @examples
 ##'
