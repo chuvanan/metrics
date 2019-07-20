@@ -3,3 +3,4 @@
 .projectile
 .*\.ipynb_checkpoints
 ^codecov\.yml$
+^\.travis\.yml$
