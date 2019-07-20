@@ -2,3 +2,4 @@
 ^\.Rproj\.user$
 .projectile
 .*\.ipynb_checkpoints
+^codecov\.yml$
