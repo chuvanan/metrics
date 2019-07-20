@@ -6,19 +6,19 @@
 
 ### Introduction
 
-*Why another package for assessing machine learning models?*
+* Why another package for assessing machine learning models?
 
 
 
 
-*How is your package different?*
+* How is your package different?
 
 
 ### How to use metrics
 
 #### Installation
 
-Install the stable version of =metrics= from CRAN:
+Install the stable version of **metrics** from CRAN:
 
 ``` r
 install.packages("metrics")
