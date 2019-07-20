@@ -1,0 +1,14 @@
+language: r
+
+sudo: required
+
+env: _R_CHECK_CRAN_INCOMING_=FALSE
+
+r_github_packages:
+  - chuvanan/metrics
+
+r_packages:
+  - covr
+
+after_success:
+  - Rscript -e "library(covr); codecov()"
