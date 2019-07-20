@@ -1,5 +1,6 @@
 
-[![Codecov test coverage](https://codecov.io/gh/chuvanan/metrics/branch/master/graph/badge.svg)](https://codecov.io/gh/chuvanan/metrics?branch=master)
+
+[[https://codecov.io/gh/chuvanan/metrics/branch/master/graph/badge.svg)%5D(https://codecov.io/gh/chuvanan/metrics?branch=master][Codecov test coverage]]
 
 * metrics
 
