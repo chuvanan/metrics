@@ -18,15 +18,6 @@ expect_equal(
     tol = 1e-7
 )
 
-
-## AUC helper ------------------------------------------------------------------
-
-## https://github.com/tidymodels/yardstick/blob/master/tests/testthat/test-auc.R
-## expect_equal(
-##     trapezoid(c(1, 1.2, 1.6, 2), c(4, 3.8, 4.2, 5)),
-##     target = 4.22
-## )
-
 ## Test AUPRC ------------------------------------------------------------------
 
 ## PRROC::pr.curve(pred[act == 1], pred[act == 0], curve = FALSE)
