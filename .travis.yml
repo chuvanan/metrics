@@ -1,8 +1,8 @@
-language: r
+# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
+language: R
+cache: packages
 sudo: false
-
-cache: package
 
 r_github_packages:
   - chuvanan/metrics

@@ -1,6 +1,6 @@
 
 
-[![Codecov test coverage](https://codecov.io/gh/chuvanan/metrics/branch/master/graph/badge.svg)](https://codecov.io/gh/chuvanan/metrics?branch=master)
+[![Travis build status](https://travis-ci.org/chuvanan/metrics.svg?branch=master)](https://travis-ci.org/chuvanan/metrics)[![Codecov test coverage](https://codecov.io/gh/chuvanan/metrics/branch/master/graph/badge.svg)](https://codecov.io/gh/chuvanan/metrics?branch=master)
 
 ## metrics
 
