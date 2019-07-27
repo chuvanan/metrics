@@ -41,8 +41,6 @@ Metrics that built around confusion matrix:
 
 - [X] F1 Score
 
-- [ ] F Measure (Weighted Harmonic Mean Between Precision And Recall) 
-
 - [X] Matthews Correlation Coefficient (MCC)
 
 - [ ] Discriminant Power
