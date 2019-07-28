@@ -34,6 +34,15 @@ check_binary <- function(actual) {
     invisible()
 }
 
+check_number_of_labels <- function(n_labels, n_samples) {
+    
+    if (! (1 < n_labels & n_labels < n_samples)) {
+        stop("Number of labels is invalid. Valid value are 2 to n_samples - 1", call. = FALSE)
+    }
+    
+    invisible()
+}
+
 clip <- function(x, mi, ma) {
     clip_(x, mi, ma)
 }

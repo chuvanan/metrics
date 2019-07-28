@@ -111,7 +111,7 @@ Proper scoring rule:
 
 - [X] Adjusted Rand Score
 
-- [ ] Calinski-Harabasz Score
+- [X] Calinski-Harabasz Score
 
 - [ ] Davies-Bouldin Score
 

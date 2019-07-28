@@ -3,6 +3,7 @@
 
 vec_a = c(0, 1, 2, 0, 3, 4, 5, 1)
 vec_b = c(1, 1, 0, 0, 2, 2, 2, 2)
+data(iris)
 
 tinytest::expect_equal(
     mtr_mutual_info_score(vec_a, vec_b),
@@ -45,6 +46,22 @@ tinytest::expect_equal(
     target = 0.4999999999999998,
     tol = 1e-7
 )
+
+tinytest::expect_equal(
+    mtr_calinski_harabasz(iris[,-5], 
+        predicted = c(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                      1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                      1, 1, 1, 1, 1, 1, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 2, 2, 2, 2, 0, 2, 2, 2,
+                      2, 2, 2, 0, 0, 2, 2, 2, 2, 0, 2, 0, 2, 0, 2, 2, 0, 0, 2, 2, 2, 2,
+                      2, 0, 2, 2, 2, 2, 0, 2, 2, 2, 0, 2, 2, 2, 0, 2, 2, 0)),
+    target = 560.3999242466402,
+    tol = 1e-2 
+    # numerical calculation outcome between python and R return large small 
+    # difference, hence relatively large tolerance level
+)
+
 
 
 

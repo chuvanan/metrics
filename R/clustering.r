@@ -110,7 +110,6 @@ mtr_adjusted_rand_score <- function(actual, predicted) {
 ##' score.
 ##' 
 ##' @inheritParams clustering_params
-##' @importFrom base choose
 ##' @return A numeric scalar output
 ##' @author Phuc Nguyen
 ##' @examples
@@ -141,4 +140,52 @@ mtr_v_measure <- function(actual, predicted) {
     h = mtr_homogeneity(actual, predicted)
     c = mtr_completeness(actual, predicted)
     2 * h * c / (h + c)
+}
+
+##' @title
+##' Calinski-Harabasz Score (Variance Ratio Criterion)
+##'
+##'
+##' @description
+##'
+##' \code{mtr_calinski_harabasz} measure the 'goodness' of clustering model 
+##' output, in case ground truth is unknown. Higher score mean cluster are dense
+##' and well separated.
+##' 
+##' @inheritParams clustering_params
+##' @return A numeric scalar output
+##' @author Phuc Nguyen
+##' @examples
+##' dt <- iris[,-5]
+##' pred <- c(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+##' 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+##' 1, 1, 1, 1, 1, 1, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+##' 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+##' 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 2, 2, 2, 2, 0, 2, 2, 2,
+##' 2, 2, 2, 0, 0, 2, 2, 2, 2, 0, 2, 0, 2, 0, 2, 2, 0, 0, 2, 2, 2, 2,
+##' 2, 0, 2, 2, 2, 2, 0, 2, 2, 2, 0, 2, 2, 2, 0, 2, 2, 0)
+##' mtr_calinski_harabasz(dt, pred)
+##'
+##' @export
+
+mtr_calinski_harabasz <- function(matrix_feature, predicted) {
+    dt_center = apply(matrix_feature, 2, FUN = mean)
+    N = length(predicted)
+    num_cluster = length(unique(predicted))
+    
+    check_number_of_labels(n_labels = num_cluster, n_samples = N)
+    
+    dispersion_between_cluster = 0
+    dispersion_within_cluster = 0
+    
+    for (cluster_val in unique(predicted)) {
+        size_cluster = length(which(predicted == cluster_val))
+        dt_cluster = matrix_feature[which(predicted == cluster_val),]
+        cluster_center = apply(dt_cluster, 2, FUN = mean)
+        
+        dispersion_between_cluster = dispersion_between_cluster + size_cluster * sum((t(cluster_center) - dt_center) ^ 2)
+        dispersion_within_cluster = dispersion_within_cluster + sum((t(dt_cluster) - cluster_center) ^ 2)
+    }
+    
+    (dispersion_between_cluster / dispersion_within_cluster) * ((N - num_cluster) / (num_cluster - 1))
 }
