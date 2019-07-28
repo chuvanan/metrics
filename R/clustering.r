@@ -94,3 +94,51 @@ mtr_adjusted_rand_score <- function(actual, predicted) {
     c = 1/2 * (sum(choose(table(actual), 2)) + sum(choose(table(predicted), 2)))
     (a - b) / (c - b)
 }
+
+##' @title
+##' Homogeneity, Completeness, V-measure
+##'
+##'
+##' @description
+##'
+##' \code{mtr_homogeneity} and \code{mtr_completeness} measures an aspect of the 
+##' quality of clustering algorithm, as the former measures how similar the 
+##' elements within each cluster to each other, and the later measures 
+##' the degree a cluster has cover elements of same labels. 
+##' Both scores are in range of 0 to 1, as worst to best.
+##' \code{mtr_v_measure} is harmonic mean of homogeneity score and completeness
+##' score.
+##' 
+##' @inheritParams clustering_params
+##' @importFrom base choose
+##' @return A numeric scalar output
+##' @author Phuc Nguyen
+##' @examples
+##'
+##' act <- sample(1:10, 100, replace = T)
+##' pred <- sample(1:10, 100, replace = T)
+##' mtr_homogeneity(act, pred)
+##'
+##' act <- sample(1:10, 100, replace = T)
+##' pred <- sample(1:10, 100, replace = T)
+##' mtr_completeness(act, pred)
+##'
+##' act <- sample(1:10, 100, replace = T)
+##' pred <- sample(1:10, 100, replace = T)
+##' mtr_v_measure(act, pred)
+##'
+##' @export
+
+mtr_homogeneity <- function(actual, predicted) {
+    1 - conditional_entropy(actual, predicted) / entropy(actual)
+}
+
+mtr_completeness <- function(actual, predicted) {
+    1 - conditional_entropy(predicted, actual) / entropy(predicted)
+}
+
+mtr_v_measure <- function(actual, predicted) {
+    h = mtr_homogeneity(actual, predicted)
+    c = mtr_completeness(actual, predicted)
+    2 * h * c / (h + c)
+}

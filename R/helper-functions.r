@@ -69,7 +69,7 @@ trapezoid <- function(x, y) {
 
 class_prob <- function(vec, class) {
     chec_empty_vec(vec)
-    length(which(vec == class)) / length(vec = vec)
+    length(which(vec == class)) / length(vec)
 }
 
 entropy <- function(vec) {
@@ -123,3 +123,17 @@ expected_mutual_info <- function(vec_1, vec_2) {
     emi
 }
 
+conditional_entropy <- function(vec_1, vec_2) {
+    check_equal_length(vec_1, vec_2)
+    N = length(vec_1)
+    li = c()
+    for (i in unique(vec_1)) {
+        for (j in unique(vec_2)) {
+            b = length(which(vec_2 == j))
+            nij = length(which(vec_1 == i & vec_2 == j)) 
+            li = c(li, - nij / N * log(nij / b))
+        }
+    }
+    cond_entropy = sum(li, na.rm = TRUE)
+    cond_entropy
+}

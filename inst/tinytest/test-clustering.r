@@ -27,3 +27,24 @@ tinytest::expect_equal(
     target = -0.12903225806451613,
     tol = 1e-7
 )
+
+tinytest::expect_equal(
+    mtr_homogeneity(vec_a, vec_b),
+    target = 0.3999999999999998,
+    tol = 1e-7
+)
+
+tinytest::expect_equal(
+    mtr_completeness(vec_a, vec_b),
+    target = 0.6666666666666665,
+    tol = 1e-7
+)
+
+tinytest::expect_equal(
+    mtr_v_measure(vec_a, vec_b),
+    target = 0.4999999999999998,
+    tol = 1e-7
+)
+
+
+
