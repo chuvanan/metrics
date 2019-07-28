@@ -107,7 +107,7 @@ Proper scoring rule:
 
 ** Clustering tasks
 
-- [ ] Adjusted Mututal Information Score / Mutual Information Score
+- [X] Adjusted Mututal Information Score / Mutual Information Score
 
 - [ ] Adjusted Rand Score
 
