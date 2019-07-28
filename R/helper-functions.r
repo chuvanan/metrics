@@ -69,7 +69,7 @@ trapezoid <- function(x, y) {
 
 class_prob <- function(vec, class) {
     chec_empty_vec(vec)
-    length(which(vec == class)) / length(vec)
+    length(which(vec == class)) / length(vec = vec)
 }
 
 entropy <- function(vec) {

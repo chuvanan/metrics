@@ -21,3 +21,9 @@ tinytest::expect_equal(
     target = -0.10526315789473674,
     tol = 1e-7
 )
+
+tinytest::expect_equal(
+    mtr_adjusted_rand_score(vec_a, vec_b),
+    target = -0.12903225806451613,
+    tol = 1e-7
+)

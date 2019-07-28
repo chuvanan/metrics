@@ -27,7 +27,7 @@ NULL
 ##' 
 ##' @inheritParams clustering_params
 ##' @importFrom stats var
-##' @seealso \code{\link{mtr_r2}}
+##' @seealso \code{\link{mtr_adjusted_rand_score}}
 ##' @return A numeric scalar output
 ##' @author Phuc Nguyen
 ##' @examples
@@ -56,4 +56,41 @@ mtr_normalized_mutual_info_score <- function(actual, predicted) {
 mtr_adjusted_mutual_info_score <- function(actual, predicted) {
     (mtr_mutual_info_score(actual, predicted) - expected_mutual_info(actual, predicted)) / 
         (mean(c(entropy(actual), entropy(predicted))) - expected_mutual_info(actual, predicted))
+}
+
+##' @title
+##' Adjusted Rand Score
+##'
+##'
+##' @description
+##'
+##' \code{mtr_adjusted_rand_score} measures the similarity, or mutual dependence 
+##' between two variable. Perfect score is 1. Score between total random vectors
+##' is close to 0. Score can be negative.
+##' 
+##' 
+##' @inheritParams clustering_params
+##' @importFrom base choose
+##' @seealso \code{\link{mtr_mutual_info_score}}
+##' @return A numeric scalar output
+##' @author Phuc Nguyen
+##' @examples
+##'
+##' act <- sample(1:10, 100, replace = T)
+##' pred <- sample(1:10, 100, replace = T)
+##' mtr_adjusted_rand_score(act, pred)
+##'
+##' act <- rep(c('a', 'b', 'c'), times = 4)
+##' pred <- rep(c('a', 'b', 'c'), each = 4)
+##' mtr_adjusted_rand_score(act, pred)
+##'
+##' @export
+
+mtr_adjusted_rand_score <- function(actual, predicted) {
+    check_equal_length(actual, predicted)
+    N = length(actual)
+    a = sum(choose(table(actual, predicted), 2))
+    b = sum(choose(table(actual), 2)) * sum(choose(table(predicted), 2)) / choose(N, 2)
+    c = 1/2 * (sum(choose(table(actual), 2)) + sum(choose(table(predicted), 2)))
+    (a - b) / (c - b)
 }
