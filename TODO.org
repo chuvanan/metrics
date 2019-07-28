@@ -115,10 +115,10 @@ Proper scoring rule:
 
 - [ ] Davies-Bouldin Score
 
-- [ ] Completeness Metric
+- [X] Completeness Metric
 
-- [ ] V-Measure Score
+- [X] V-Measure Score
 
-- [ ] Homogeneity Score
+- [X] Homogeneity Score
 
 - [ ] Mean Silhouette Coefficient / Silhouette Coefficient
