@@ -1,14 +1,17 @@
 Package: metrics
 Title: Metrics For Evaluating Machine Learning Models
-Version: 0.1.1
-Authors@R:
-    person(given = "An",
-           family = "Chu",
-           role = c("aut", "cre"),
-           email = "chuvanan.cva@gmail.com")
+Version: 0.1.2
+Authors@R: c(
+  person("An", "Chu", role = c("aut", "cre"), email = "chuvanan.cva@gmail.com"),
+  person("Phuc", "Nguyen", role = c("aut"), email = "phucnnm.ec@gmail.com"),
+  person("Mai", "Nguyen", role = c("aut"), email = "mainguyenq41@gmail.com")
+)
+Maintainer: An Chu <chuvanan.cva@gamil.com>
 Description: Performance metrics for classification and regression problems
     that are widely used in supervised machine learning.
 License: file LICENSE
+URL: https://github.com/chuvanan/metrics
+BugReports: https://github.com/chuvanan/metrics/issues
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
@@ -18,7 +21,8 @@ LinkingTo:
 Imports:
     Rcpp
 Suggests:
-    tinytest
+    tinytest,
+    covr
 Collate:
     'RcppExports.R'
     'helper-functions.r'
