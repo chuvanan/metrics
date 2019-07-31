@@ -1,4 +1,4 @@
-
+
 
 
 * List of performance metrics
@@ -23,6 +23,8 @@ Metrics that built around confusion matrix:
 
 - [X] Balanced Accuracy
 
+- [ ] Balanced Error Rate
+
 - [X] Positive Predicted Value (PPV) / Precision
 
 - [ ] Average Precision
@@ -31,11 +33,17 @@ Metrics that built around confusion matrix:
 
 - [X] False Omission Rate (FOR)
 
+- [ ] Positive Likelihood 
+
+- [ ] Negative Likelihood
+
 - [X] Prevalence
 
 - [X] F1 Score
 
 - [X] Matthews Correlation Coefficient (MCC)
+
+- [ ] Discriminant Power
 
 - [X] Informedness (Bookmaker Informedness - BM) / Youden Index (Youden's J Statistic)
 
@@ -77,13 +85,25 @@ Proper scoring rule:
 
 - [X] Mean Squared Error
 
+- [ ] Normalized Mean Squared Error
+
 - [X] Root Mean Squared Error
 
 - [X] Mean Squared Logarithmic Error
 
 - [X] Median Absolute Error
 
+- [ ] Mean Absolute Percentage Error
+
+- [ ] Mean Absolute Scaled Error
+
+- [ ] Median Squared Error
+
 - [X] R2 Score
+
+- [ ] Adjusted R2 Score
+
+- [ ] M-Estimators
 
 ** Clustering tasks
 

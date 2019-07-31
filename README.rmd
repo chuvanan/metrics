@@ -63,7 +63,7 @@ and rationale behind the API:
 
 * `mtr_` is the short form of **m**e**tr**ics. As in `stringr` package,
   `metrics` uses the prefix to provide consistent naming that makes it easy to
-  type with autocompletion in RStuido or Emacs's ESS.
+  type with autocompletion in RStudio or Emacs's ESS.
 
 * `_fun` is the name of performance metrics. The package declares verbosely
   which measure is going to be used. For a full list of evaluation metrics,
