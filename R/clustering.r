@@ -169,6 +169,7 @@ mtr_v_measure <- function(actual, predicted) {
 ##' @export
 
 mtr_calinski_harabasz <- function(matrix_feature, predicted) {
+    check_equal_cluster_length(matrix_feature, predicted)
     dt_center = apply(matrix_feature, 2, FUN = mean)
     N = length(predicted)
     num_cluster = length(unique(predicted))
