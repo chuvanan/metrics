@@ -113,7 +113,7 @@ Proper scoring rule:
 
 - [X] Calinski-Harabasz Score
 
-- [ ] Davies-Bouldin Score
+- [X] Davies-Bouldin Score
 
 - [X] Completeness Metric
 

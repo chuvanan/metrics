@@ -153,6 +153,7 @@ mtr_v_measure <- function(actual, predicted) {
 ##' and well separated.
 ##' 
 ##' @inheritParams clustering_params
+##' @seealso \code{\link{mtr_davies_boulding_score}}
 ##' @return A numeric scalar output
 ##' @author Phuc Nguyen
 ##' @examples
@@ -188,4 +189,54 @@ mtr_calinski_harabasz <- function(matrix_feature, predicted) {
     }
     
     (dispersion_between_cluster / dispersion_within_cluster) * ((N - num_cluster) / (num_cluster - 1))
+}
+
+##' @title
+##' Davies-Bouldin Score
+##'
+##'
+##' @description
+##'
+##' \code{mtr_davies_boulding_score} measure the 'goodness' of clustering model 
+##' output, in case ground truth is unknown. Lowest and best score is 0,
+##' and lower score mean clusters are dense and separated
+##' 
+##' @inheritParams clustering_params
+##' @seealso \code{\link{mtr_calinski_harabasz}}
+##' @return A numeric scalar output
+##' @author Phuc Nguyen
+##' @examples
+##' dt <- iris[,-5]
+##' pred <- c(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+##' 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+##' 1, 1, 1, 1, 1, 1, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+##' 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+##' 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 2, 2, 2, 2, 0, 2, 2, 2,
+##' 2, 2, 2, 0, 0, 2, 2, 2, 2, 0, 2, 0, 2, 0, 2, 2, 0, 0, 2, 2, 2, 2,
+##' 2, 0, 2, 2, 2, 2, 0, 2, 2, 2, 0, 2, 2, 2, 0, 2, 2, 0)
+##' mtr_calinski_harabasz(dt, pred)
+##'
+##' @export
+
+mtr_davies_boulding_score <- function(matrix_feature, predicted) {
+    check_equal_cluster_length(matrix_feature, predicted)
+    similarity_sum = 0
+    for (cluster_val in unique(predicted)) {
+        dt_cluster = matrix_feature[which(predicted == cluster_val),]
+        cluster_center = apply(dt_cluster, 2, FUN = mean)
+        cluster_diameter = mean_distance(dt_cluster, cluster_center)
+        max_similarity = 0
+        
+        for(other_cluster_val in unique(predicted)[unique(predicted) != cluster_val]) {
+            dt_other_cluster = matrix_feature[which(predicted == other_cluster_val),]
+            other_cluster_center = apply(dt_other_cluster, 2, FUN = mean)
+            other_cluster_diameter = mean_distance(dt_other_cluster, other_cluster_center)
+            between_distance = pairwise_distance(cluster_center, other_cluster_center)
+            similarity = (cluster_diameter + other_cluster_diameter) / between_distance
+            max_similarity = max(max_similarity, similarity)
+        }
+        similarity_sum = similarity_sum + max_similarity
+    }
+    
+    similarity_sum/length(unique(predicted))
 }
