@@ -109,16 +109,16 @@ Proper scoring rule:
 
 - [ ] Adjusted Mututal Information Score / Mutual Information Score
 
-- [ ] Adjusted Rand Score
+- [X] Adjusted Rand Score
 
-- [ ] Calinski-Harabasz Score
+- [X] Calinski-Harabasz Score
 
-- [ ] Davies-Bouldin Score
+- [X] Davies-Bouldin Score
 
-- [ ] Completeness Metric
+- [X] Completeness Metric
 
-- [ ] V-Measure Score
+- [X] V-Measure Score
 
-- [ ] Homogeneity Score
+- [X] Homogeneity Score
 
 - [ ] Mean Silhouette Coefficient / Silhouette Coefficient
