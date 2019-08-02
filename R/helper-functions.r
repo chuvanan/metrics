@@ -1,5 +1,11 @@
 
-
+chec_empty_vec <- function(vec) {
+    if (length(vec) == 0) {
+        stop("vector must have positive length.", call. = FALSE)
+    }
+    
+    invisible()
+}
 
 check_equal_length <- function(actual, predicted) {
 
@@ -25,6 +31,15 @@ check_binary <- function(actual) {
         stop("`actual` only supports binary values: 0 & 1.", call. = FALSE)
     }
 
+    invisible()
+}
+
+check_number_of_labels <- function(n_labels, n_samples) {
+    
+    if (! (1 < n_labels & n_labels < n_samples)) {
+        stop("Number of labels is invalid. Valid value are 2 to n_samples - 1", call. = FALSE)
+    }
+    
     invisible()
 }
 
@@ -59,4 +74,75 @@ trapezoid <- function(x, y) {
     height <- (y[-1] + y[-length(y)]) / 2
 
     sum(dx * height)
+}
+
+class_prob <- function(vec, class) {
+    chec_empty_vec(vec)
+    length(which(vec == class)) / length(vec)
+}
+
+entropy <- function(vec) {
+    chec_empty_vec(vec)
+    li = c()
+    for (cl in unique(vec)) {
+        m = class_prob(vec = vec, class = cl)
+        li = c(li, -1 * m * log(m))
+    }
+    etp = sum(li, na.rm = TRUE)
+    etp
+}
+
+joint_class_prob <- function(vec_1, vec_2, class_1, class_2) {
+    chec_empty_vec(vec_1)
+    check_equal_length(vec_1, vec_2)
+    length(which(vec_1 == class_1 & vec_2 == class_2)) / length(vec_1)
+}
+
+joint_entropy <- function(vec_1, vec_2) {
+    check_equal_length(vec_1, vec_2)
+    li = c()
+    for(cl_1 in unique(vec_1)) {
+        for(cl_2 in unique(vec_2)) {
+            m = joint_class_prob(vec_1 = vec_1, vec_2 = vec_2, 
+                                 class_1 = cl_1, class_2 = cl_2)
+            li = c(li, - 1 * m * log(m))
+        }
+    }
+    joint_etp = sum(li, na.rm = TRUE)
+    joint_etp
+}
+
+expected_mutual_info <- function(vec_1, vec_2) {
+    check_equal_length(vec_1, vec_2)
+    N = length(vec_1)
+    li = c()
+    for (i in unique(vec_1)) {
+        a = length(which(vec_1 == i))
+        for (j in unique(vec_2)) {
+            b = length(which(vec_2 == j))
+            for (nij in max(a + b - N, 0, na.rm = TRUE): min(a, b, na.rm = TRUE)) {
+                li = c(li, (nij / N) * 
+                           log((N * nij) / (a * b)) * 
+                           (factorial(a) * factorial(b) * factorial(N - a) * factorial(N - b)) /
+                           (factorial(N) * factorial(nij) * factorial(a - nij) * factorial(b - nij) * factorial(N - a - b + nij)))
+            }
+        }
+    }
+    emi = sum(li, na.rm = TRUE)
+    emi
+}
+
+conditional_entropy <- function(vec_1, vec_2) {
+    check_equal_length(vec_1, vec_2)
+    N = length(vec_1)
+    li = c()
+    for (i in unique(vec_1)) {
+        for (j in unique(vec_2)) {
+            b = length(which(vec_2 == j))
+            nij = length(which(vec_1 == i & vec_2 == j)) 
+            li = c(li, - nij / N * log(nij / b))
+        }
+    }
+    cond_entropy = sum(li, na.rm = TRUE)
+    cond_entropy
 }
