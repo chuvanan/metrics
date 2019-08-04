@@ -160,18 +160,22 @@ conditional_entropy <- function(vec_1, vec_2) {
 pairwise_distance <- function(vec_1, vec_2) {
     # calculate euclidean distance between two points
     check_equal_length(vec_1, vec_2)
-    sqrt(sum((vec_1 - vec_2) ^ 2))
+    sqrt(sum((as.numeric(vec_1) - as.numeric(vec_2)) ^ 2))
 }
 
 mean_distance <- function(set, pt) {
     # calculate euclidean distance between a set of point, represented by 
     # data frame, to a single point
+
     total_dist = 0
     check_equal_length(set, pt)
+    
     for (i in 1:nrow(set)) {
         ve = set[i,]
         total_dist = total_dist + pairwise_distance(ve, pt)
     }
+    
     total_dist / nrow(set)
 }
+
 

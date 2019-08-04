@@ -240,3 +240,106 @@ mtr_davies_boulding_score <- function(matrix_feature, predicted) {
     
     similarity_sum/length(unique(predicted))
 }
+
+##' @title
+##' Sihouette Coefficient
+##'
+##'
+##' @description
+##'
+##' \code{mtr_sihouette_coef} measure the 'goodness' of clustering model 
+##' output for each sample in the clustering model output, in case ground 
+##' truth is unknown. Lowest and worst score is -1, while highest and best 
+##' score is 1, with higher score means denser and better
+##' separated clusters. 
+##' 
+##' The Silhouette Coefficient is defined for each sample and is composed of 
+##' two scores:
+##' a: The mean distance between a sample and all other points in the same class.
+##' b: The mean distance between a sample and all other points in the next 
+##' nearest cluster.
+##' The Silhouette Coefficient s for a single sample is then given as:
+##' \code{(b-a)/max(a,b)}
+##'
+##' @inheritParams clustering_params
+##' @seealso \code{\link{mtr_davies_boulding_score}} 
+##' @return A numeric vector output, length is number of all predictions.
+##' @author Phuc Nguyen
+##' @examples
+##' dt <- iris[,-5]
+##' pred <- c(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+##' 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+##' 1, 1, 1, 1, 1, 1, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+##' 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+##' 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 2, 2, 2, 2, 0, 2, 2, 2,
+##' 2, 2, 2, 0, 0, 2, 2, 2, 2, 0, 2, 0, 2, 0, 2, 2, 0, 0, 2, 2, 2, 2,
+##' 2, 0, 2, 2, 2, 2, 0, 2, 2, 2, 0, 2, 2, 2, 0, 2, 2, 0)
+##' mtr_sihouette_coef(dt, pred)
+##'
+##' @export
+
+mtr_sihouette_coef <- function(matrix_feature, predicted) {
+    # matrix_feature <- iris[,-5]
+    # predicted <- c(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    # 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    # 1, 1, 1, 1, 1, 1, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    # 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    # 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 2, 2, 2, 2, 0, 2, 2, 2,
+    # 2, 2, 2, 0, 0, 2, 2, 2, 2, 0, 2, 0, 2, 0, 2, 2, 0, 0, 2, 2, 2, 2,
+    # 2, 0, 2, 2, 2, 2, 0, 2, 2, 2, 0, 2, 2, 2, 0, 2, 2, 0)
+    
+    check_equal_cluster_length(matrix_feature, predicted)
+    li = c()
+    
+    for (i in seq_along(predicted)) {
+        cluster_val = predicted[[i]]
+        dt_sample = matrix_feature[i,]
+        dt_cluster_exclude = matrix_feature[setdiff(which(predicted == cluster_val), i) ,]
+        inner_dist = mean_distance(set = dt_cluster_exclude, pt = dt_sample)
+        outer_dist_li = c()
+        for(other_cluster_val in unique(predicted)[unique(predicted) != cluster_val]) {
+            dt_other_cluster = matrix_feature[which(predicted == other_cluster_val),]
+            outer_dist = mean_distance(set = dt_other_cluster, pt = dt_sample)
+            outer_dist_li = c(outer_dist_li, outer_dist)
+        }
+        # this method can be further optimized by calculating distance matrix 
+        # beforehand then using pointer to select out
+        
+        min_outer_dist = min(outer_dist_li)
+        
+        sample_coef = (min_outer_dist - inner_dist) / max(inner_dist, min_outer_dist)
+        li = c(li, sample_coef)
+    }
+    li
+}
+
+##' @title
+##' Mean Sihouette Coefficient
+##'
+##'@description
+##'
+##' \code{mtr_mean_sihouette_coef} is an average of Sihouette coefficient of all 
+##' samples, representing general level of 'goodness' of model in one single score.
+##' 
+##' @inheritParams clustering_params
+##' @seealso \code{\link{mtr_sihouette_coef}} 
+##' @return A numeric scalar output
+##' @author Phuc Nguyen
+##' @examples
+##' dt <- iris[,-5]
+##' pred <- c(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+##' 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+##' 1, 1, 1, 1, 1, 1, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+##' 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+##' 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 2, 2, 2, 2, 0, 2, 2, 2,
+##' 2, 2, 2, 0, 0, 2, 2, 2, 2, 0, 2, 0, 2, 0, 2, 2, 0, 0, 2, 2, 2, 2,
+##' 2, 0, 2, 2, 2, 2, 0, 2, 2, 2, 0, 2, 2, 2, 0, 2, 2, 0)
+##' mtr_mean_sihouette_coef(dt, pred)
+##'
+##' @export
+
+mtr_mean_sihouette_coef <- function(matrix_feature, predicted) {
+    check_equal_cluster_length(matrix_feature, predicted)
+    mean(mtr_sihouette_coef(matrix_feature, predicted))
+}
+
