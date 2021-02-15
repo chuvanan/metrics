@@ -109,7 +109,7 @@ Proper scoring rule:
 
 - [ ] Adjusted Mututal Information Score / Mutual Information Score
 
-- [ ] Adjusted Rand Score
+- [X] Adjusted Rand Score
 
 - [ ] Calinski-Harabasz Score
 
